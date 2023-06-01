@@ -16,8 +16,6 @@ dependencies:
     path: "../dependencies"
   design_system:
     path: "../design_system"
-  micro_app_splash:
-    path: "../micro_app_splash"
   micro_app_login:
     path: "../micro_app_login"
 
