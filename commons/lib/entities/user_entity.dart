@@ -6,7 +6,7 @@ class UserEntity {
   final String cellphone;
   ProfileImageEntity? profileImage;
   final DateTime createdAt;
-  final String token;
+  final String? token;
 
   UserEntity(
     this.id,
