@@ -182,13 +182,6 @@ packages:
       relative: true
     source: path
     version: "0.0.1"
-  micro_app_splash:
-    dependency: transitive
-    description:
-      path: "../micro_app_splash"
-      relative: true
-    source: path
-    version: "0.0.1"
   modular_core:
     dependency: transitive
     description:

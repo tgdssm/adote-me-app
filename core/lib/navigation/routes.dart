@@ -1,6 +1,5 @@
 enum Routes {
-  initial(path: "/"),
-  login(path: "/login/");
+  initial(path: "/");
 
   const Routes({required this.path});
   final String path;
