@@ -5,11 +5,13 @@ class DefaultTextField extends StatelessWidget {
   final String label;
   final TextEditingController controller;
   final String? Function(String?)? validator;
+  final bool obscure;
   const DefaultTextField({
     Key? key,
     required this.label,
     required this.controller,
     this.validator,
+    this.obscure = false,
   }) : super(key: key);
 
   @override
@@ -27,6 +29,7 @@ class DefaultTextField extends StatelessWidget {
           controller: controller,
           validator: validator,
           cursorColor: Colors.white,
+          obscureText: obscure,
           decoration: InputDecoration(
             focusedBorder: OutlineInputBorder(
               borderRadius: BorderRadius.circular(20),

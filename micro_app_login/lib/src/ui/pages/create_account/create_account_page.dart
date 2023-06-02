@@ -1,4 +1,5 @@
 import 'package:commons/commons.dart';
+import 'package:core/core.dart';
 import 'package:dependencies/dependencies.dart';
 import 'package:design_system/design_system.dart';
 import 'package:flutter/material.dart';
@@ -32,33 +33,39 @@ class _CreateAccountPageState extends State<CreateAccountPage> {
             builder: (context, snapshot) {
               final state = snapshot.data;
               if(state is SuccessState<UserEntity>) {
-                print(state.data.token);
+
               }
               if(state is ErrorState) {
-                print(state.message);
+
               }
               return SingleChildScrollView(
                 child: Form(
                   key: formKey,
                   child: Column(
                     children: [
+                      const SizedBox(height: 40),
                       const Text(
                         Strings.createAccount,
                         style: TextStyles.heading1,
                       ),
-                      const Row(
+                      Row(
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
-                          Text(
+                          const Text(
                             Strings.alreadyRegistered,
                             style: TextStyles.subtitle1,
                           ),
-                          SizedBox(
+                          const SizedBox(
                             width: 3,
                           ),
-                          Text(
-                            Strings.login,
-                            style: TextStyles.subtitle1,
+                          InkWell(
+                            onTap: (){
+                              Modular.to.pushReplacementNamed(Routes.login.path);
+                            },
+                            child: const Text(
+                              Strings.login,
+                              style: TextStyles.subtitle1,
+                            ),
                           ),
                         ],
                       ),
@@ -84,15 +91,17 @@ class _CreateAccountPageState extends State<CreateAccountPage> {
                       DefaultTextField(
                         controller: passwordController,
                         label: Strings.password,
+                        obscure: true,
                         validator: (value) {},
                       ),
                       const SizedBox(height: 20),
                       DefaultTextField(
                         controller: confirmPasswordController,
+                        obscure: true,
                         label: Strings.confirmPassword,
                         validator: (value) {},
                       ),
-                      const SizedBox(height: 20),
+                      const SizedBox(height: 60),
                       DefaultButton(
                         onPressed: () {
                           final entity = CreateAccountEntity(nameController.text, emailController.text, cellphoneController.text, passwordController.text);

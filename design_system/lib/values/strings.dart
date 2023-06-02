@@ -10,6 +10,10 @@ class Strings {
   static const login = "Login";
   static const alreadyRegistered = "Já está cadastrado?";
 
+  // Login
+  static const dontHaveAccountYet = "Não tem uma conta ainda?";
+  static const signup = "Cadastre-se";
+
   // Errors
   static const errorNameEmpty = "Informe o nome";
   static const errorNameSmall = "Nome deve contar mais de 3 caracteres";
