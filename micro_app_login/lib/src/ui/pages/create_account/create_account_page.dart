@@ -2,6 +2,7 @@ import 'package:commons/commons.dart';
 import 'package:dependencies/dependencies.dart';
 import 'package:design_system/design_system.dart';
 import 'package:flutter/material.dart';
+import 'package:micro_app_login/src/domain/entities/create_account_entity.dart';
 import 'package:micro_app_login/src/ui/pages/create_account/create_account_bloc.dart';
 
 class CreateAccountPage extends StatefulWidget {
@@ -30,7 +31,12 @@ class _CreateAccountPageState extends State<CreateAccountPage> {
             stream: bloc.stream,
             builder: (context, snapshot) {
               final state = snapshot.data;
-
+              if(state is SuccessState<UserEntity>) {
+                print(state.data.token);
+              }
+              if(state is ErrorState) {
+                print(state.message);
+              }
               return SingleChildScrollView(
                 child: Form(
                   key: formKey,
@@ -88,7 +94,10 @@ class _CreateAccountPageState extends State<CreateAccountPage> {
                       ),
                       const SizedBox(height: 20),
                       DefaultButton(
-                        onPressed: () {},
+                        onPressed: () {
+                          final entity = CreateAccountEntity(nameController.text, emailController.text, cellphoneController.text, passwordController.text);
+                          bloc(entity);
+                        },
                         width: MediaQuery.sizeOf(context).width,
                         title: Strings.register,
                         loading: state is LoadingState,

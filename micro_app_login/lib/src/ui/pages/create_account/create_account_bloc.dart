@@ -1,9 +1,6 @@
 import 'dart:async';
 
-import 'package:commons/state_manager/states/base_state.dart';
-import 'package:commons/state_manager/states/error_state.dart';
-import 'package:commons/state_manager/states/loading_state.dart';
-import 'package:commons/state_manager/states/success_state.dart';
+import 'package:commons/commons.dart';
 import 'package:micro_app_login/src/domain/entities/create_account_entity.dart';
 import 'package:micro_app_login/src/domain/usecases/create_account/create_account_usecase.dart';
 
@@ -24,7 +21,7 @@ class CreateAccountBloc {
       return;
     }
 
-    _outputState.add(SuccessState(result));
+    _outputState.add(SuccessState<UserEntity>(result!));
     return;
 
   }
