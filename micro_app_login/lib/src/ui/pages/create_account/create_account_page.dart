@@ -15,6 +15,7 @@ class CreateAccountPage extends StatefulWidget {
 
 class _CreateAccountPageState extends State<CreateAccountPage> {
   final bloc = Modular.get<CreateAccountBloc>();
+  final userProvider = Modular.get<UserProvider>();
   final formKey = GlobalKey<FormState>();
   final nameController = TextEditingController();
   final emailController = TextEditingController();
@@ -33,7 +34,7 @@ class _CreateAccountPageState extends State<CreateAccountPage> {
             builder: (context, snapshot) {
               final state = snapshot.data;
               if(state is SuccessState<UserEntity>) {
-
+                userProvider.userData = state.data;
               }
               if(state is ErrorState) {
 
