@@ -8,5 +8,9 @@ class CoreModule extends Module {
           (i) => Dio(),
           export: true,
         ),
+        Bind.singleton<UserProvider>(
+          (i) => UserProvider(),
+          export: true,
+        ),
       ];
 }

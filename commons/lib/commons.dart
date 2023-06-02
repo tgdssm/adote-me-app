@@ -15,3 +15,6 @@ export 'state_manager/states/error_state.dart';
 export 'state_manager/states/success_state.dart';
 export 'state_manager/states/empty_state.dart';
 export 'state_manager/consumer_widget.dart';
+
+
+export 'providers/user_provider.dart';
