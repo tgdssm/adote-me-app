@@ -9,8 +9,7 @@ class CreateAccountUseCaseImpl implements ICreateAccountUseCase {
   const CreateAccountUseCaseImpl(this.repository);
   @override
   Future<(UserEntity?, BaseError?)> call(CreateAccountEntity accountEntity) {
-    // TODO: implement call
-    throw UnimplementedError();
+    return repository(accountEntity);
   }
 
 }

@@ -1,7 +1,9 @@
 import 'package:commons/commons.dart';
+import 'package:core/core.dart';
 import 'package:dependencies/dependencies.dart';
 import 'package:design_system/design_system.dart';
 import 'package:flutter/material.dart';
+import 'package:micro_app_login/src/domain/entities/create_account_entity.dart';
 import 'package:micro_app_login/src/ui/pages/create_account/create_account_bloc.dart';
 
 class CreateAccountPage extends StatefulWidget {
@@ -30,29 +32,40 @@ class _CreateAccountPageState extends State<CreateAccountPage> {
             stream: bloc.stream,
             builder: (context, snapshot) {
               final state = snapshot.data;
+              if(state is SuccessState<UserEntity>) {
 
+              }
+              if(state is ErrorState) {
+
+              }
               return SingleChildScrollView(
                 child: Form(
                   key: formKey,
                   child: Column(
                     children: [
+                      const SizedBox(height: 40),
                       const Text(
                         Strings.createAccount,
                         style: TextStyles.heading1,
                       ),
-                      const Row(
+                      Row(
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
-                          Text(
+                          const Text(
                             Strings.alreadyRegistered,
                             style: TextStyles.subtitle1,
                           ),
-                          SizedBox(
+                          const SizedBox(
                             width: 3,
                           ),
-                          Text(
-                            Strings.login,
-                            style: TextStyles.subtitle1,
+                          InkWell(
+                            onTap: (){
+                              Modular.to.pushReplacementNamed(Routes.login.path);
+                            },
+                            child: const Text(
+                              Strings.login,
+                              style: TextStyles.subtitle1,
+                            ),
                           ),
                         ],
                       ),
@@ -78,17 +91,22 @@ class _CreateAccountPageState extends State<CreateAccountPage> {
                       DefaultTextField(
                         controller: passwordController,
                         label: Strings.password,
+                        obscure: true,
                         validator: (value) {},
                       ),
                       const SizedBox(height: 20),
                       DefaultTextField(
                         controller: confirmPasswordController,
+                        obscure: true,
                         label: Strings.confirmPassword,
                         validator: (value) {},
                       ),
-                      const SizedBox(height: 20),
+                      const SizedBox(height: 60),
                       DefaultButton(
-                        onPressed: () {},
+                        onPressed: () {
+                          final entity = CreateAccountEntity(nameController.text, emailController.text, cellphoneController.text, passwordController.text);
+                          bloc(entity);
+                        },
                         width: MediaQuery.sizeOf(context).width,
                         title: Strings.register,
                         loading: state is LoadingState,

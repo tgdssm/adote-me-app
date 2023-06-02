@@ -69,4 +69,13 @@ class AppHttpClientDioServiceImpl implements IAppHttpClientService {
       ),
     );
   }
+
+  Future<void> addInterceptors(String token) async {
+    _dio.interceptors.add(InterceptorsWrapper(
+      onRequest: (options, handler) {
+        options.headers["Authorization"] = "Bearer $token";
+        options.headers["Accept"] = "*/*";
+      },
+    ));
+  }
 }
