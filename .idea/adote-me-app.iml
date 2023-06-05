@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<module type="JAVA_MODULE" version="4">
+  <component name="NewModuleRootManager" inherit-compiler-output="true">
+    <exclude-output />
+    <content url="file://$MODULE_DIR$">
+      <excludeFolder url="file://$MODULE_DIR$/core/.dart_tool" />
+      <excludeFolder url="file://$MODULE_DIR$/core/build" />
+      <excludeFolder url="file://$MODULE_DIR$/core/.pub" />
+      <excludeFolder url="file://$MODULE_DIR$/micro_app_login/build" />
+      <excludeFolder url="file://$MODULE_DIR$/micro_app_login/.pub" />
+      <excludeFolder url="file://$MODULE_DIR$/micro_app_login/.dart_tool" />
+      <excludeFolder url="file://$MODULE_DIR$/design_system/build" />
+      <excludeFolder url="file://$MODULE_DIR$/design_system/.dart_tool" />
+      <excludeFolder url="file://$MODULE_DIR$/design_system/.pub" />
+      <excludeFolder url="file://$MODULE_DIR$/commons/.pub" />
+      <excludeFolder url="file://$MODULE_DIR$/commons/.dart_tool" />
+      <excludeFolder url="file://$MODULE_DIR$/commons/build" />
+      <excludeFolder url="file://$MODULE_DIR$/base_app/.pub" />
+      <excludeFolder url="file://$MODULE_DIR$/base_app/build" />
+      <excludeFolder url="file://$MODULE_DIR$/base_app/.dart_tool" />
+      <excludeFolder url="file://$MODULE_DIR$/micro_app_splash/.dart_tool" />
+      <excludeFolder url="file://$MODULE_DIR$/micro_app_splash/.pub" />
+      <excludeFolder url="file://$MODULE_DIR$/micro_app_splash/build" />
+      <excludeFolder url="file://$MODULE_DIR$/dependencies/.pub" />
+      <excludeFolder url="file://$MODULE_DIR$/dependencies/.dart_tool" />
+      <excludeFolder url="file://$MODULE_DIR$/dependencies/build" />
+      <excludeFolder url="file://$MODULE_DIR$/micro_app_home/.dart_tool" />
+      <excludeFolder url="file://$MODULE_DIR$/micro_app_home/build" />
+      <excludeFolder url="file://$MODULE_DIR$/micro_app_home/.pub" />
+    </content>
+    <orderEntry type="inheritedJdk" />
+    <orderEntry type="sourceFolder" forTests="false" />
+    <orderEntry type="library" name="Dart SDK" level="project" />
+    <orderEntry type="library" name="Dart Packages" level="project" />
+  </component>
+</module>

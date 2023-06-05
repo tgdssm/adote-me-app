@@ -19,6 +19,7 @@ class _LoginPageState extends State<LoginPage> {
   final formKey = GlobalKey<FormState>();
   final emailController = TextEditingController();
   final passwordController = TextEditingController();
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -31,9 +32,9 @@ class _LoginPageState extends State<LoginPage> {
               final state = snapshot.data;
               if(state is SuccessState<UserEntity>) {
                 userProvider.userData = state.data;
+                Modular.to.pushReplacementNamed(Routes.home.path);
               }
               if(state is ErrorState) {
-
               }
               return Form(
                 key: formKey,
