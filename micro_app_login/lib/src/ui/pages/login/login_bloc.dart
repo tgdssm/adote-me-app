@@ -19,7 +19,7 @@ class LoginBloc {
       return;
     }
 
-    _outputState.add(SuccessState(result!));
+    _outputState.add(SuccessState<UserEntity>(result!));
     return;
   }
 }

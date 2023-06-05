@@ -8,5 +8,6 @@ class AppModule extends Module {
   @override
   List<ModularRoute> get routes => [
         ModuleRoute(Routes.initial.path, module: LoginModule()),
-      ];
+        ModuleRoute(Routes.home.path, module: HomeModule()),
+  ];
 }
