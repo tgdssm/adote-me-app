@@ -15,7 +15,7 @@ class LoginPage extends StatefulWidget {
 
 class _LoginPageState extends State<LoginPage> {
   final bloc = Modular.get<LoginBloc>();
-  final userProvider = Modular.get<UserProvider>();
+  final userProvider = UserProvider();
   final formKey = GlobalKey<FormState>();
   final emailController = TextEditingController();
   final passwordController = TextEditingController();
@@ -32,6 +32,7 @@ class _LoginPageState extends State<LoginPage> {
               final state = snapshot.data;
               if(state is SuccessState<UserEntity>) {
                 userProvider.userData = state.data;
+                print(userProvider.hasUser);
                 Modular.to.pushReplacementNamed(Routes.home.path);
               }
               if(state is ErrorState) {

@@ -1,3 +1,5 @@
+import 'dart:ffi';
+
 import 'package:commons/entities/pet_entity.dart';
 import 'package:commons/models/user_model.dart';
 
@@ -16,9 +18,9 @@ class PetModel extends PetEntity {
         map["id"],
         map["name"],
         map["age"],
-        map["weight"],
+        map["weight"].toDouble(),
         map["requirements"],
         UserModel.fromMap(map["user"]),
-        map["photos"].map((photo) => photo["file_path"]).toList(),
+        List<String>.from(map["photos"].map((photo) => photo["file_path"] as String)),
       );
 }

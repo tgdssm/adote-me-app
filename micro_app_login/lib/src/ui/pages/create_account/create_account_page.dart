@@ -15,7 +15,7 @@ class CreateAccountPage extends StatefulWidget {
 
 class _CreateAccountPageState extends State<CreateAccountPage> {
   final bloc = Modular.get<CreateAccountBloc>();
-  final userProvider = Modular.get<UserProvider>();
+  final userProvider = UserProvider();
   final formKey = GlobalKey<FormState>();
   final nameController = TextEditingController();
   final emailController = TextEditingController();
