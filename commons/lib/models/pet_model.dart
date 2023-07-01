@@ -8,6 +8,7 @@ class PetModel extends PetEntity {
     super.age,
     super.weight,
     super.requirements,
+    super.createdAt,
     super.user,
     super.photos,
   );
@@ -16,9 +17,11 @@ class PetModel extends PetEntity {
         map["id"],
         map["name"],
         map["age"],
-        map["weight"],
+        map["weight"].toDouble(),
         map["requirements"],
+        DateTime.parse(map["created_at"]),
         UserModel.fromMap(map["user"]),
-        map["photos"].map((photo) => photo["file_path"]).toList(),
+        List<String>.from(map["photos"]
+            .map((photo) => "http://10.0.2.2:3000/${photo["file_path"]}")),
       );
 }

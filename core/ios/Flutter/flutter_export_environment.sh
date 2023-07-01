@@ -1,6 +1,6 @@
 #!/bin/sh
 # This is a generated file; do not edit or check into version control.
-export "FLUTTER_ROOT=C:\Users\thali\fvm\versions\3.10.2"
+export "FLUTTER_ROOT=C:\Users\thali\fvm\default"
 export "FLUTTER_APPLICATION_PATH=C:\Users\thali\StudioProjects\adote-me-app\core"
 export "COCOAPODS_PARALLEL_CODE_SIGN=true"
 export "FLUTTER_TARGET=lib\main.dart"

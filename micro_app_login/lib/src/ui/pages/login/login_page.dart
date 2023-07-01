@@ -15,7 +15,7 @@ class LoginPage extends StatefulWidget {
 
 class _LoginPageState extends State<LoginPage> {
   final bloc = Modular.get<LoginBloc>();
-  final userProvider = Modular.get<UserProvider>();
+  final userProvider = UserProvider();
   final formKey = GlobalKey<FormState>();
   final emailController = TextEditingController();
   final passwordController = TextEditingController();
@@ -30,67 +30,74 @@ class _LoginPageState extends State<LoginPage> {
             stream: bloc.stream,
             builder: (context, snapshot) {
               final state = snapshot.data;
-              if(state is SuccessState<UserEntity>) {
+              if (state is SuccessState<UserEntity>) {
                 userProvider.userData = state.data;
                 Modular.to.pushReplacementNamed(Routes.home.path);
               }
-              if(state is ErrorState) {
-              }
-              return Form(
-                key: formKey,
-                child: Column(
-                  children: [
-                    const SizedBox(height: 40),
-                    Text(
-                      Strings.login.toUpperCase(),
-                      style: TextStyles.heading1,
-                    ),
-                    const SizedBox(height: 20),
-                    DefaultTextField(
-                      controller: emailController,
-                      label: Strings.email,
-                      validator: (value) {},
-                    ),
-                    const SizedBox(height: 20),
-                    DefaultTextField(
-                      controller: passwordController,
-                      label: Strings.password,
-                      obscure: true,
-                      validator: (value) {},
-                    ),
-                    const SizedBox(height: 20),
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
+              if (state is ErrorState) {}
+              return SingleChildScrollView(
+                child: SizedBox(
+                  height: MediaQuery.sizeOf(context).height / 1.2,
+                  child: Form(
+                    key: formKey,
+                    child: Column(
                       children: [
-                        const Text(
-                          Strings.dontHaveAccountYet,
-                          style: TextStyles.subtitle1,
+                        const SizedBox(height: 40),
+                        Text(
+                          Strings.login.toUpperCase(),
+                          style: TextStyles.heading1,
+                        ),
+                        const SizedBox(height: 20),
+                        DefaultTextField(
+                          controller: emailController,
+                          label: Strings.email,
+                          validator: (value) {},
+                        ),
+                        const SizedBox(height: 20),
+                        DefaultTextField(
+                          controller: passwordController,
+                          label: Strings.password,
+                          obscure: true,
+                          validator: (value) {},
                         ),
                         const SizedBox(
-                          width: 3,
+                          height: 10,
                         ),
-                        InkWell(
-                          onTap: (){
-                            Modular.to.pushReplacementNamed(Routes.initial.path);
-                          },
-                          child: const Text(
-                            Strings.signup,
-                            style: TextStyles.subtitle1,
+                        const Align(
+                          alignment: Alignment.centerLeft,
+                          child: Text(
+                            Strings.forgotPassword,
+                            style: TextStyles.labelField,
                           ),
                         ),
+                        const Spacer(),
+                        DefaultButton(
+                          onPressed: () {
+                            bloc(emailController.text, passwordController.text);
+                          },
+                          width: MediaQuery.sizeOf(context).width,
+                          title: Strings.login.toUpperCase(),
+                          loading: state is LoadingState,
+                        ),
+                        const SizedBox(height: 30),
+                        const Text(
+                          Strings.dontHaveAccountYet,
+                          style: TextStyles.labelField,
+                        ),
+                        const SizedBox(height: 10),
+                        DefaultButton(
+                          onPressed: () {
+                            Modular.to.pushReplacementNamed(Routes.initial.path);
+                          },
+                          width: MediaQuery.sizeOf(context).width,
+                          title: Strings.register.toUpperCase(),
+                          disable: state is LoadingState,
+                        ),
+                        const SizedBox(height: 50),
+                        const Text('Adote.me')
                       ],
                     ),
-                    const Spacer(),
-                    DefaultButton(
-                      onPressed: () {
-                        bloc(emailController.text, passwordController.text);
-                      },
-                      width: MediaQuery.sizeOf(context).width,
-                      title: Strings.login.toUpperCase(),
-                      loading: state is LoadingState,
-                    ),
-                    const SizedBox(height: 60),
-                  ],
+                  ),
                 ),
               );
             },

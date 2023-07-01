@@ -15,7 +15,7 @@ class CreateAccountPage extends StatefulWidget {
 
 class _CreateAccountPageState extends State<CreateAccountPage> {
   final bloc = Modular.get<CreateAccountBloc>();
-  final userProvider = Modular.get<UserProvider>();
+  final userProvider = UserProvider();
   final formKey = GlobalKey<FormState>();
   final nameController = TextEditingController();
   final emailController = TextEditingController();
@@ -26,99 +26,141 @@ class _CreateAccountPageState extends State<CreateAccountPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: AppColors.whiteBackground,
+      backgroundColor: Colors.white,
       body: SafeArea(
-        child: SizedBox(
-          child: ConsumerWidget<BaseState>(
-            stream: bloc.stream,
-            builder: (context, snapshot) {
-              final state = snapshot.data;
-              if(state is SuccessState<UserEntity>) {
-                userProvider.userData = state.data;
-              }
-              if(state is ErrorState) {
-
-              }
-              return SingleChildScrollView(
-                child: Form(
-                  key: formKey,
-                  child: Column(
+        child: Stack(
+          alignment: Alignment.center,
+          children: [
+            Positioned(
+              top: 30,
+              child: Column(
+                children: [
+                  const Text(
+                    Strings.createAccount,
+                    style: TextStyles.heading1,
+                  ),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
                     children: [
-                      const SizedBox(height: 40),
                       const Text(
-                        Strings.createAccount,
-                        style: TextStyles.heading1,
+                        Strings.alreadyRegistered,
+                        style: TextStyles.subtitle2,
                       ),
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          const Text(
-                            Strings.alreadyRegistered,
-                            style: TextStyles.subtitle1,
-                          ),
-                          const SizedBox(
-                            width: 3,
-                          ),
-                          InkWell(
-                            onTap: (){
-                              Modular.to.pushReplacementNamed(Routes.login.path);
-                            },
-                            child: const Text(
-                              Strings.login,
-                              style: TextStyles.subtitle1,
-                            ),
-                          ),
-                        ],
+                      const SizedBox(
+                        width: 3,
                       ),
-                      const SizedBox(height: 20),
-                      DefaultTextField(
-                        controller: nameController,
-                        label: Strings.name,
-                        validator: (value) {},
-                      ),
-                      const SizedBox(height: 20),
-                      DefaultTextField(
-                        controller: emailController,
-                        label: Strings.email,
-                        validator: (value) {},
-                      ),
-                      const SizedBox(height: 20),
-                      DefaultTextField(
-                        controller: cellphoneController,
-                        label: Strings.cellphone,
-                        validator: (value) {},
-                      ),
-                      const SizedBox(height: 20),
-                      DefaultTextField(
-                        controller: passwordController,
-                        label: Strings.password,
-                        obscure: true,
-                        validator: (value) {},
-                      ),
-                      const SizedBox(height: 20),
-                      DefaultTextField(
-                        controller: confirmPasswordController,
-                        obscure: true,
-                        label: Strings.confirmPassword,
-                        validator: (value) {},
-                      ),
-                      const SizedBox(height: 60),
-                      DefaultButton(
-                        onPressed: () {
-                          final entity = CreateAccountEntity(nameController.text, emailController.text, cellphoneController.text, passwordController.text);
-                          bloc(entity);
+                      InkWell(
+                        onTap: (){
+                          Modular.to.pushReplacementNamed(Routes.login.path);
                         },
-                        width: MediaQuery.sizeOf(context).width,
-                        title: Strings.register,
-                        loading: state is LoadingState,
+                        child: const Text(
+                          Strings.login,
+                          style: TextStyles.subtitle2,
+                        ),
                       ),
                     ],
                   ),
+                ],
+              ),
+            ),
+            Positioned(
+              top: 150,
+              left: -125,
+              child: Container(
+                width: 250,
+                height: 250,
+                decoration: const BoxDecoration(
+                  shape: BoxShape.circle,
+                  color: AppColors.primary,
                 ),
-              );
-            },
-          ),
-        ).addPadding(),
+              ),
+            ),
+            Positioned(
+              bottom: 15,
+              right: -125,
+              child: Container(
+                width: 250,
+                height: 250,
+                decoration: const BoxDecoration(
+                  shape: BoxShape.circle,
+                  color: AppColors.secondary,
+                ),
+              ),
+            ),
+            Align(
+              alignment: Alignment.center,
+              child: Container(
+                margin: const EdgeInsets.only(top: 80),
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(20),
+                  color: AppColors.whiteBackground,
+                ),
+                child: ConsumerWidget<BaseState>(
+                  stream: bloc.stream,
+                  builder: (context, snapshot) {
+                    final state = snapshot.data;
+                    if(state is SuccessState<UserEntity>) {
+                      userProvider.userData = state.data;
+                    }
+                    if(state is ErrorState) {
+
+                    }
+                    return SingleChildScrollView(
+                      child: Form(
+                        key: formKey,
+                        child: Column(
+                          children: [
+                            DefaultTextField(
+                              controller: nameController,
+                              label: Strings.name,
+                              validator: (value) {},
+                            ),
+                            const SizedBox(height: 20),
+                            DefaultTextField(
+                              controller: emailController,
+                              label: Strings.email,
+                              validator: (value) {},
+                            ),
+                            const SizedBox(height: 20),
+                            DefaultTextField(
+                              controller: cellphoneController,
+                              label: Strings.cellphone,
+                              validator: (value) {},
+                            ),
+                            const SizedBox(height: 20),
+                            DefaultTextField(
+                              controller: passwordController,
+                              label: Strings.password,
+                              obscure: true,
+                              validator: (value) {},
+                            ),
+                            const SizedBox(height: 20),
+                            DefaultTextField(
+                              controller: confirmPasswordController,
+                              obscure: true,
+                              label: Strings.confirmPassword,
+                              validator: (value) {},
+                            ),
+                            const SizedBox(height: 60),
+                            DefaultButton(
+                              onPressed: () {
+                                final entity = CreateAccountEntity(nameController.text, emailController.text, cellphoneController.text, passwordController.text);
+                                bloc(entity);
+                              },
+                              width: MediaQuery.sizeOf(context).width,
+                              title: Strings.register,
+                              loading: state is LoadingState,
+                            ),
+                          ],
+                        ),
+                      ).addPadding(horizontal: 20),
+                    );
+                  },
+                ),
+              ).addPadding(),
+            )
+          ],
+        ),
       ),
     );
   }

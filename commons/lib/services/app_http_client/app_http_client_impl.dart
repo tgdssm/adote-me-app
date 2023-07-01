@@ -1,11 +1,21 @@
+import 'package:commons/commons.dart';
 import 'package:dependencies/dependencies.dart';
-
-import 'app_http_client_service.dart';
 
 class AppHttpClientDioServiceImpl implements IAppHttpClientService {
   final Dio _dio;
+  final UserProvider _user = UserProvider();
 
-  AppHttpClientDioServiceImpl(this._dio);
+  AppHttpClientDioServiceImpl(this._dio) {
+    _dio.interceptors.add(InterceptorsWrapper(
+      onRequest: (options, handler) {
+        if (_user.hasUser) {
+          options.headers["Authorization"] = "Bearer ${_user.userData.token}";
+        }
+        options.headers["Accept"] = "*/*";
+        return handler.next(options);
+      },
+    ));
+  }
 
   @override
   Future delete(
