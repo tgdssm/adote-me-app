@@ -6,7 +6,15 @@ class DefaultButton extends StatelessWidget {
   final double width;
   final bool loading;
   final String title;
-  const DefaultButton({Key? key, required this.onPressed, required this.width, required this.loading, required this.title}) : super(key: key);
+  final bool disable;
+  const DefaultButton(
+      {Key? key,
+      required this.onPressed,
+      required this.width,
+      required this.title,
+      this.loading = false,
+      this.disable = false})
+      : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -16,19 +24,21 @@ class DefaultButton extends StatelessWidget {
       width: loading ? 80 : width,
       height: 50,
       child: MaterialButton(
-          onPressed: onPressed,
-          color: AppColors.primary,
-          shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(20)
-          ),
-          child: switch(loading) {
-            true => const Center(
-              child: CircularProgressIndicator(color: Colors.white,),
+        onPressed: disable ? null : onPressed,
+        color: AppColors.primary,
+        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
+        child: switch (loading) {
+          true => const Center(
+              child: CircularProgressIndicator(
+                color: Colors.white,
+              ),
             ),
-            _ => Text(title, style: TextStyles.button,)
-          },
-
-    ),
+          _ => Text(
+              title,
+              style: TextStyles.button,
+            )
+        },
+      ),
     );
   }
 }

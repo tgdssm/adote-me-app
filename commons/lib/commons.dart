@@ -1,5 +1,7 @@
 library commons;
 
+export 'blocs/update_bloc.dart';
+
 export 'services/app_http_client/app_http_client_service.dart';
 export 'services/app_http_client/app_http_client_impl.dart';
 
@@ -20,3 +22,5 @@ export 'state_manager/consumer_widget.dart';
 
 
 export 'providers/user_provider.dart';
+
+export 'swiper_card/swiper_card.dart';

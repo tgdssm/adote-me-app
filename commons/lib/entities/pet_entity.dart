@@ -6,6 +6,7 @@ class PetEntity {
   final int age;
   final double weight;
   final String requirements;
+  final DateTime createdAt;
   final UserEntity user;
   final List<String> photos;
 
@@ -15,6 +16,7 @@ class PetEntity {
     this.age,
     this.weight,
     this.requirements,
+    this.createdAt,
     this.user,
     this.photos,
   );

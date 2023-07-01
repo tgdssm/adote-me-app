@@ -23,7 +23,7 @@ class DefaultTextField extends StatelessWidget {
           child: Text(label, style: TextStyles.labelField,),
         ),
         const SizedBox(
-          height: 10,
+          height: 5,
         ),
         TextFormField(
           controller: controller,

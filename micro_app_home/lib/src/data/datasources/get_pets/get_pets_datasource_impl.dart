@@ -10,7 +10,7 @@ class GetPetsDatasourceImpl implements IGetPetsDatasource {
     try {
       final users = <PetModel>[];
       final result = await dio.get(
-        "http://10.0.2.2:8080/pets",
+        "http://10.0.2.2:3000/pets",
       );
 
       for(var pet in result.data) {

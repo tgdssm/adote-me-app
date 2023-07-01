@@ -1,18 +1,19 @@
 class Strings {
   // Register
-  static const createAccount = "CRIAR CONTA";
+  static const createAccount = "Criar Conta";
   static const register = "CADASTRAR";
-  static const name = "NOME";
-  static const email = "EMAIL";
-  static const cellphone = "TELEFONE";
-  static const password = "SENHA";
-  static const confirmPassword = "CONFIRME SUA SENHA";
+  static const name = "Nome";
+  static const email = "Email";
+  static const cellphone = "Telefone";
+  static const password = "Senha";
+  static const confirmPassword = "Confirme sua senha";
   static const login = "Login";
   static const alreadyRegistered = "Já está cadastrado?";
 
   // Login
   static const dontHaveAccountYet = "Não tem uma conta ainda?";
   static const signup = "Cadastre-se";
+  static const forgotPassword = "Esqueci minha senha";
 
   // Errors
   static const errorNameEmpty = "Informe o nome";

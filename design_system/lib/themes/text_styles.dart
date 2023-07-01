@@ -21,6 +21,12 @@ class TextStyles {
   );
 
   static const subtitle1 = TextStyle(
+    fontSize: 16,
+    color: Colors.white,
+    fontWeight: FontWeight.bold,
+  );
+
+  static const subtitle2 = TextStyle(
     fontSize: 13,
     color: Colors.black,
     fontWeight: FontWeight.bold,
