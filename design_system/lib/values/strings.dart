@@ -15,6 +15,13 @@ class Strings {
   static const signup = "Cadastre-se";
   static const forgotPassword = "Esqueci minha senha";
 
+  // Register Pet
+  static const registerPet = "Cadastrar\nPet";
+  static const age = 'Idade';
+  static const weight = 'Peso';
+  static const requirements = 'Requisitos';
+  static const addPhotos = 'Adicionar fotos';
+
   // Errors
   static const errorNameEmpty = "Informe o nome";
   static const errorNameSmall = "Nome deve contar mais de 3 caracteres";

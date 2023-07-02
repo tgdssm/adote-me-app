@@ -30,15 +30,18 @@ class _PetsCardsWidgetState extends State<PetsCardsWidget> {
           return Stack(
             children: [
               Center(
-                child: MaterialButton(
+                child: DefaultButton(
                   onPressed: widget.reload,
-                  child: const Text("Recarregar"),
+                  title: 'Recarregar',
+                  width: 150,
                 ),
               ),
               ...state
                   .map(
                     (e) => Center(
                       child: SwiperCard(
+                        onTapPet: () {
+                        },
                         urlImage: e.photos.first,
                         petName: e.name,
                         nextCard: () {
@@ -51,7 +54,7 @@ class _PetsCardsWidgetState extends State<PetsCardsWidget> {
                   .toList(),
               ...state
                   .map((e) => Positioned(
-                        top: MediaQuery.sizeOf(context).height / 2 + 230,
+                        bottom: 0,
                         child: Visibility(
                           visible: widget.pets.indexOf(e) ==
                               (widget.pets.length - 1),
@@ -60,14 +63,23 @@ class _PetsCardsWidgetState extends State<PetsCardsWidget> {
                             child: Row(
                               children: [
                                 Container(
+                                  alignment: Alignment.center,
                                   height: 50,
                                   width: 50,
                                   decoration: const BoxDecoration(
                                     shape: BoxShape.circle,
-                                    color: AppColors.grey1,
+                                    color: AppColors.primary,
+                                  ),
+                                  child: Text(
+                                    e.user.name[0],
+                                    style: TextStyles.heading1.copyWith(
+                                      color: Colors.white,
+                                    ),
                                   ),
                                 ),
-                                const SizedBox(width: 15,),
+                                const SizedBox(
+                                  width: 15,
+                                ),
                                 Column(
                                   crossAxisAlignment: CrossAxisAlignment.start,
                                   children: [
@@ -99,12 +111,12 @@ class _PetsCardsWidgetState extends State<PetsCardsWidget> {
   }
 
   String publicationDate(DateTime createAt) {
-    final differenceInDays = DateTime.now().difference(createAt).inDays;
-    if(differenceInDays == 0) {
-      return "postado hoje";
+    final difference = DateTime.now().difference(createAt);
+    if (difference.inDays == 0) {
+      return "há ${difference.inHours} horas";
     } else {
-      if(differenceInDays > 1) {
-        return "há $differenceInDays dias";
+      if (difference.inDays > 1) {
+        return "há ${difference.inDays} dias";
       } else {
         return "há 1 dia";
       }

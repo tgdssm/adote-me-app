@@ -7,10 +7,12 @@ class SwiperCard extends StatefulWidget {
   final String urlImage;
   final VoidCallback nextCard;
   final String petName;
+  final VoidCallback onTapPet;
   const SwiperCard({
     Key? key,
     required this.urlImage,
     required this.nextCard,
+    required this.onTapPet,
     this.petName = '',
   }) : super(key: key);
 
@@ -25,7 +27,6 @@ class _SwiperCardState extends State<SwiperCard> {
 
   @override
   void initState() {
-    print(widget.urlImage);
     super.initState();
   }
 
@@ -61,11 +62,12 @@ class _SwiperCardState extends State<SwiperCard> {
       final center = constraints.smallest.center(Offset.zero);
       final newAngle = angle * pi / 360;
       return GestureDetector(
+        onTap: widget.onTapPet,
         onPanStart: (details) => startPosition(),
         onPanUpdate: (details) => updatePosition(details, constraints.maxWidth),
         onPanEnd: (_) => endPosition(constraints.maxWidth),
         child: AnimatedContainer(
-          height: 400,
+          height: 550,
           padding: const EdgeInsets.symmetric(horizontal: 50),
           duration: Duration(milliseconds: isDragging ? 0 : 400),
           curve: Curves.easeInOut,
@@ -74,7 +76,7 @@ class _SwiperCardState extends State<SwiperCard> {
             ..rotateZ(newAngle)
             ..translate(position.dx, position.dy),
           child: Container(
-            height: 400,
+            height: 550,
             width: MediaQuery.sizeOf(context).width,
             decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(20),

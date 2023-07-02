@@ -47,15 +47,16 @@ class AppHttpClientDioServiceImpl implements IAppHttpClientService {
 
   @override
   Future post(
-    String url,
-    Map<String, dynamic> body, {
+    String url, {
+    Map<String, dynamic>? body,
+    FormData? formData,
     Map<String, dynamic>? queryParameters,
     Map<String, String>? headers,
     String? contentType,
   }) {
     return _dio.post(
       url,
-      data: body,
+      data: body ?? formData,
       queryParameters: queryParameters,
       options: Options(headers: headers, contentType: contentType),
     );
