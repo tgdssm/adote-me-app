@@ -11,7 +11,7 @@ class LoginDatasourceImpl implements ILoginDatasource {
     try {
       final result = await dio.post(
         "http://10.0.2.2:3000/login",
-        {
+        body: {
           "email": email,
           "passwd": password,
         },

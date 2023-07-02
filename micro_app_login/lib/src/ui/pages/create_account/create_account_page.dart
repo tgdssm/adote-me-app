@@ -87,7 +87,7 @@ class _CreateAccountPageState extends State<CreateAccountPage> {
                 ),
               ),
             ),
-            Align(
+            Align (
               alignment: Alignment.center,
               child: Container(
                 margin: const EdgeInsets.only(top: 80),
@@ -101,6 +101,7 @@ class _CreateAccountPageState extends State<CreateAccountPage> {
                     final state = snapshot.data;
                     if(state is SuccessState<UserEntity>) {
                       userProvider.userData = state.data;
+                      Modular.to.pushReplacementNamed(Routes.home.path);
                     }
                     if(state is ErrorState) {
 

@@ -27,6 +27,9 @@
       <excludeFolder url="file://$MODULE_DIR$/micro_app_home/.dart_tool" />
       <excludeFolder url="file://$MODULE_DIR$/micro_app_home/build" />
       <excludeFolder url="file://$MODULE_DIR$/micro_app_home/.pub" />
+      <excludeFolder url="file://$MODULE_DIR$/micro_app_register_pet/build" />
+      <excludeFolder url="file://$MODULE_DIR$/micro_app_register_pet/.dart_tool" />
+      <excludeFolder url="file://$MODULE_DIR$/micro_app_register_pet/.pub" />
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />

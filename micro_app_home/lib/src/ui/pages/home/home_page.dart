@@ -1,4 +1,5 @@
 import 'package:commons/commons.dart';
+import 'package:core/navigation/navigation.dart';
 import 'package:dependencies/dependencies.dart';
 import 'package:design_system/design_system.dart';
 import 'package:flutter/material.dart';
@@ -45,7 +46,7 @@ class _HomePageState extends State<HomePage> {
             ),
           ),
           Positioned(
-            bottom: 15,
+            bottom: 150,
             right: -125,
             child: Container(
               width: 250,
@@ -64,9 +65,59 @@ class _HomePageState extends State<HomePage> {
               if (state is ErrorState) {}
 
               if (state is SuccessState<List<PetEntity>>) {
-                return PetsCardsWidget(
-                  pets: state.data.reversed.toList(),
-                  reload: () => bloc(),
+                return Column(
+                  children: [
+                    const Spacer(),
+                    SizedBox(
+                      height: 700,
+                      child: PetsCardsWidget(
+                        pets: state.data.reversed.toList(),
+                        reload: () => bloc(),
+                      ),
+                    ),
+                    const SizedBox(
+                      height: 40,
+                    ),
+                    Container(
+                      width: 180,
+                      height: 60,
+                      decoration: BoxDecoration(
+                        color: Colors.white,
+                        borderRadius: BorderRadius.circular(35)
+                      ),
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          IconButton(
+                            onPressed: () {},
+                            icon: const Icon(
+                              Icons.home,
+                              size: 40,
+                            ),
+                          ),
+                          IconButton(
+                            onPressed: () {
+                              Modular.to.pushNamed(Routes.register.path);
+                            },
+                            icon: const Icon(
+                              Icons.add_circle,
+                              size: 40,
+                            ),
+                          ),
+                          IconButton(
+                            onPressed: () {},
+                            icon: const Icon(
+                              Icons.settings,
+                              size: 40,
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
+                    const SizedBox(
+                      height: 60,
+                    ),
+                  ],
                 );
               }
 

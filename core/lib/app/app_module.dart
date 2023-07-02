@@ -9,5 +9,6 @@ class AppModule extends Module {
   List<ModularRoute> get routes => [
         ModuleRoute(Routes.initial.path, module: LoginModule()),
         ModuleRoute(Routes.home.path, module: HomeModule()),
-  ];
+        ModuleRoute(Routes.register.path, module: RegisterPetModule()),
+      ];
 }

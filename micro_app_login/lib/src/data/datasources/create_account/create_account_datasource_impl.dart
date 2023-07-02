@@ -11,7 +11,7 @@ class CreateAccountDatasourceImpl implements ICreateAccountDatasource {
     try {
       final result = await dio.post(
         "http://10.0.2.2:3000/users",
-        accountModel.toMap(),
+        body: accountModel.toMap(),
       );
       final user = UserModel.fromMap(result.data);
       return(user, null);
