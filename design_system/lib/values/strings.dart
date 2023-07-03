@@ -22,6 +22,9 @@ class Strings {
   static const requirements = 'Requisitos';
   static const addPhotos = 'Adicionar fotos';
 
+  // Visualização
+  static const details = 'Detalhes';
+  static const sendEmail = 'Enviar email para doador';
   // Errors
   static const errorNameEmpty = "Informe o nome";
   static const errorNameSmall = "Nome deve contar mais de 3 caracteres";

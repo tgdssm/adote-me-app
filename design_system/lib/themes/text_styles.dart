@@ -31,4 +31,10 @@ class TextStyles {
     color: Colors.black,
     fontWeight: FontWeight.bold,
   );
+
+  static const subtitleBlack1 = TextStyle(
+    fontSize: 16,
+    color: Colors.black,
+    fontWeight: FontWeight.w400,
+  );
 }

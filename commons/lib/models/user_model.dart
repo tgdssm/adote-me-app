@@ -4,6 +4,7 @@ class UserModel extends UserEntity {
   UserModel(
     super.id,
     super.name,
+    super.email,
     super.cellphone,
     super.createdAt,
     super.token,
@@ -12,6 +13,7 @@ class UserModel extends UserEntity {
   factory UserModel.fromMap(Map<String, dynamic> map) => UserModel(
     map["id"],
     map["name"],
+    map["email"],
     map["cellphone"].toString(),
     DateTime.parse(map["created_at"]),
     map["token"],

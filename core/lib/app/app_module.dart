@@ -10,5 +10,6 @@ class AppModule extends Module {
         ModuleRoute(Routes.initial.path, module: LoginModule()),
         ModuleRoute(Routes.home.path, module: HomeModule()),
         ModuleRoute(Routes.register.path, module: RegisterPetModule()),
+        ModuleRoute(Routes.view.path, module: ViewPetModule()),
       ];
 }

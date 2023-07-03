@@ -15,9 +15,7 @@ class RegisterBloc {
   Future<void> call(PetDataEntity petData) async {
     _outputState.add(LoadingState());
     final (result, err) = await useCase(petData);
-    print(result);
     if (err != null) {
-      print(err.message);
       _outputState.add(ErrorState(err.message));
       return;
     }
