@@ -2,7 +2,8 @@ enum Routes {
   initial(path: "/"),
   login(path: "/login/"),
   home(path: "/home/"),
-  register(path: "/register/");
+  register(path: "/register/"),
+  view(path: '/view/');
 
   const Routes({required this.path});
   final String path;

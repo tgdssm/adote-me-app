@@ -30,6 +30,9 @@
       <excludeFolder url="file://$MODULE_DIR$/micro_app_register_pet/build" />
       <excludeFolder url="file://$MODULE_DIR$/micro_app_register_pet/.dart_tool" />
       <excludeFolder url="file://$MODULE_DIR$/micro_app_register_pet/.pub" />
+      <excludeFolder url="file://$MODULE_DIR$/micro_app_view_pet/build" />
+      <excludeFolder url="file://$MODULE_DIR$/micro_app_view_pet/.dart_tool" />
+      <excludeFolder url="file://$MODULE_DIR$/micro_app_view_pet/.pub" />
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />

@@ -1,4 +1,6 @@
 import 'package:commons/commons.dart';
+import 'package:core/core.dart';
+import 'package:dependencies/dependencies.dart';
 import 'package:design_system/design_system.dart';
 import 'package:flutter/material.dart';
 
@@ -41,6 +43,7 @@ class _PetsCardsWidgetState extends State<PetsCardsWidget> {
                     (e) => Center(
                       child: SwiperCard(
                         onTapPet: () {
+                          Modular.to.pushNamed(Routes.view.path, arguments: e);
                         },
                         urlImage: e.photos.first,
                         petName: e.name,

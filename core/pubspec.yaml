@@ -22,6 +22,8 @@ dependencies:
     path: "../micro_app_home"
   micro_app_register_pet:
     path: "../micro_app_register_pet"
+  micro_app_view_pet:
+    path: "../micro_app_view_pet"
 
 dev_dependencies:
   flutter_test:
